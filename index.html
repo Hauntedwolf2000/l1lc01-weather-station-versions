@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather Station: choose a version</title>
+<style>
+:root{--bg:#FFF4CF;--ink:#24405F;--muted:#3F5876;--pri:#E4572E;--pri-d:#A93C1A;--line:#BFE3F7;--panel:#FFFFFF}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+body{display:flex;flex-direction:column}
+.pick{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;text-align:center}
+.pick h1{margin:0;font-size:clamp(28px,4.2vw,52px)}
+.pick p{margin:0;font-size:clamp(16px,2vw,22px);color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.card{width:min(360px,86vw);background:var(--panel);border:4px solid var(--line);border-radius:28px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;align-items:center;box-shadow:0 8px 0 rgba(36,64,95,.12)}
+.card span{font-size:clamp(15px,1.8vw,19px);color:var(--muted);min-height:3.2em}
+button{font:inherit;cursor:pointer}
+.go{width:100%;min-height:72px;border:4px solid #D96A1C;border-radius:999px;background:var(--pri);color:#fff;font-size:clamp(22px,2.6vw,30px);font-weight:700;box-shadow:0 6px 0 var(--pri-d)}
+.go:hover{filter:brightness(1.08)}
+.go:focus-visible,.bar button:focus-visible{outline:5px solid #FFC93C;outline-offset:3px}
+.bar{display:none;align-items:center;gap:12px;padding:10px 16px;background:var(--panel);border-bottom:4px solid var(--line)}
+.bar b{margin-right:auto;font-size:clamp(16px,2vw,20px)}
+.bar button{min-height:48px;padding:0 20px;border:3px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:16px}
+.bar button[aria-pressed="true"]{background:var(--ink);color:#fff}
+#frame{display:none;flex:1;width:100%;border:0;background:var(--bg)}
+body.view .pick{display:none}body.view .bar{display:flex}body.view #frame{display:block}
+</style>
+</head>
+<body>
+<main class="pick" id="pick">
+  <h1>Weather Station</h1>
+  <p>Choose a version to open.</p>
+  <div class="btns">
+    <div class="card"><button class="go" data-v="version_1">version_1</button><span>The original version.</span></div>
+    <div class="card"><button class="go" data-v="version_2">version_2</button><span>The newer story version with three situations to choose from.</span></div>
+  </div>
+</main>
+<div class="bar" id="bar" role="toolbar" aria-label="Versions">
+  <b id="cur"></b>
+  <button type="button" data-v="version_1" aria-pressed="false">version_1</button>
+  <button type="button" data-v="version_2" aria-pressed="false">version_2</button>
+  <button type="button" id="back">Back</button>
+</div>
+<iframe id="frame" title="Weather Station" allow="autoplay; fullscreen"></iframe>
+<script>
+(function () {
+  var frame = document.getElementById('frame'), VALID = { version_1: 1, version_2: 1 };
+  function show(v) {
+    if (!VALID[v]) return;
+    document.body.classList.add('view');
+    document.getElementById('cur').textContent = 'Showing ' + v;
+    Array.prototype.forEach.call(document.querySelectorAll('.bar [data-v]'), function (b) { b.setAttribute('aria-pressed', b.dataset.v === v ? 'true' : 'false'); });
+    frame.src = v + '/index.html';
+    try { history.replaceState(null, '', '#' + v); } catch (e) {}
+  }
+  function home() {
+    document.body.classList.remove('view'); frame.removeAttribute('src');
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-v]'); if (b) { show(b.dataset.v); return; }
+    if (e.target.id === 'back') home();
+  });
+  var h = location.hash.replace('#', ''); if (VALID[h]) show(h);
+})();
+</script>
+</body>
+</html>

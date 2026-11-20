@@ -1,0 +1,18 @@
+{
+ "id": "L1LC01",
+ "title": "Weather Station",
+ "subject": "LC",
+ "level": 1,
+ "ilm": "L1LC01",
+ "version": "1.0.0",
+ "runtime": "1.0.0",
+ "maxPoints": 1000,
+ "lo": [
+  "LC.JOURNAL.OBSERVE",
+  "LC.JOURNAL.RECORD",
+  "DATA.CHART.PLOT",
+  "DATA.COMPARE"
+ ],
+ "build": "2026-11-18",
+ "checksum": "573c5b2f8ca2"
+}

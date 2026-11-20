@@ -1,0 +1,38 @@
+/* L1LC01 Weather Station: SUNNY theme. Cream sun, sky-blue header, chunky orange buttons, handwritten journal. */
+:root{--bg:#FFF4CF;--bg2:#FFFFFF;--panel:#FFFFFF;--ink:#24405F;--muted:#556E8C;--line:#3A9BDC;--line2:#BFE3F7;
+ --pri:#FF8A3D;--pri-ink:#2B1A00;--pri-d:#D96A1C;--acc:#2E8BC0;--on-dark:#24405F;--warn:#8A4B00;
+ --ok:#0B7A4B;--ok-bg:#DDF7EA;--no:#C2321F;--no-bg:#FFE6E1;--hint:#8A5200;--hint-bg:#FFF2CC;--rev:#2A4FA0;--rev-bg:#E4EDFF;
+ --floor:#D3ECFF;--grid:rgba(36,64,95,.14);--wall:#fff;--door:#FF9F1C;--win:#3DB5F2;
+ --font:"Fredoka","Segoe UI",system-ui,sans-serif;--mono:"Patrick Hand","Segoe UI",cursive}
+#stage{background:radial-gradient(circle at 12% 18%,#FFFFFF 0 70px,transparent 71px),radial-gradient(circle at 17% 20%,#FFFFFF 0 55px,transparent 56px),radial-gradient(circle at 88% 82%,#FFFFFF 0 80px,transparent 81px),radial-gradient(circle at 93% 85%,#FFFFFF 0 60px,transparent 61px),var(--bg)}
+.hdr{background:linear-gradient(180deg,#8FD8FF,#CFEFFF);border-bottom:8px solid #7BD88F;border-image:none}
+.ftr{background:#7BD88F33;border-top:6px solid #7BD88F}
+.btn{border-radius:999px;border-width:5px}.btn.pri{border-color:#D96A1C;color:#fff;background:#E4572E;box-shadow:0 8px 0 #A93C1A}
+.btn.pri.ready:not(:disabled){box-shadow:0 8px 0 #A93C1A,0 0 0 8px #FF8A3D66}
+.paper,.card,.slot{border-radius:44px}.gbub{border-radius:40px;border:4px solid #BFE3F7}
+.chip{border-radius:999px;border-width:4px;--chip:#FFF}.pool{background:#FFFFFFB0;border-radius:44px}
+.mono,.field,.key,.step output{font-family:var(--mono);font-weight:400}.field{font-size:72px}
+.thg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;justify-items:center}.thg>div{text-align:center;font-size:32px;font-weight:700}.thg svg{width:170px;height:270px;display:block;margin:0 auto}
+.fields.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;justify-items:center}.fields.g4 .frow{flex-direction:column;gap:2px;font-size:32px}.fields.g4 .frow>span:first-child{width:auto}.fields.g4 .field{width:170px}.fields.g4 .unit{display:none}
+.board.stack{flex-direction:column;height:auto}.board.stack .slots,.board.stack .pool{flex:none;width:100%}
+.sky .slot{align-items:center;text-align:center}.sky .slab{display:block;text-align:center}.sky svg,.sky .skyimg{width:100%;height:150px;object-fit:cover;display:block;border-radius:24px;border:4px solid #BFE3F7}
+.journal .slot{background:repeating-linear-gradient(180deg,#fff 0 46px,#BFE3F7 46px 50px);border-radius:24px;border-style:solid;border-color:#E4572E66;border-left:14px solid #E4572E}.journal .slab{font-family:var(--mono);font-size:36px}
+.journal .chip{font-family:var(--mono);font-weight:400;font-size:38px}
+.chart{position:relative;height:520px;margin-top:6px}.chart svg{width:100%;height:100%}.chart .dot{cursor:grab;touch-action:none}.chart .dot:focus{outline:none}.chart .dot:focus circle.d{stroke:#FF8A3D;stroke-width:8}
+.logbox{font-size:36px}.logbox table{width:100%;border-collapse:collapse}.logbox td,.logbox th{padding:6px 14px;border-bottom:3px dotted #BFE3F7;text-align:left}.logbox th{font-size:30px;color:var(--muted)}
+.cert{border-radius:30px}.cert h1{font-family:var(--font)}
+.chartbox{display:flex;flex-direction:column;min-height:0;align-self:stretch}.chart{flex:1 1 0;min-height:0;height:auto}
+/* sky pictures inside the "your work" panels (review and certificate) */
+.thg .skyimg,.art .skyimg{width:100%;height:auto;aspect-ratio:5/3;object-fit:cover;display:block;border-radius:18px;border:4px solid #BFE3F7}
+.art .thg>div{width:300px!important}
+/* season cards: picture fills its frame without being cut off at an odd place */
+.cimg .skyimg{width:100%;height:100%;object-fit:cover;display:block;border-radius:20px}
+.cards3 .cimg{height:330px}
+
+/* guide bubbles flow in a row and the row grows with its content: no overlap with the board below */
+.toprow{height:auto;min-height:110px;align-items:flex-start}
+.toprow .guide{flex:1 1 auto;max-width:1230px}
+.toprow .gmsgs{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.toprow .gbub::before{display:none}
+.toprow .fb{flex:0 1 560px;min-width:420px}
+.toprow{margin-bottom:18px}
