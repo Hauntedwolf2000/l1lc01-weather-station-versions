@@ -34,18 +34,20 @@ body.view .pick{display:none}body.view .bar{display:flex}body.view #frame{displa
   <div class="btns">
     <div class="card"><button class="go" data-v="version_1">version_1</button><span>The original version.</span></div>
     <div class="card"><button class="go" data-v="version_2">version_2</button><span>The newer story version with three situations to choose from.</span></div>
+    <div class="card"><button class="go" data-v="version_3">version_3</button><span>Indian weather facts, clear rules and a guide that needs no Next taps.</span></div>
   </div>
 </main>
 <div class="bar" id="bar" role="toolbar" aria-label="Versions">
   <b id="cur"></b>
   <button type="button" data-v="version_1" aria-pressed="false">version_1</button>
   <button type="button" data-v="version_2" aria-pressed="false">version_2</button>
+  <button type="button" data-v="version_3" aria-pressed="false">version_3</button>
   <button type="button" id="back">Back</button>
 </div>
 <iframe id="frame" title="Weather Station" allow="autoplay; fullscreen"></iframe>
 <script>
 (function () {
-  var frame = document.getElementById('frame'), VALID = { version_1: 1, version_2: 1 };
+  var frame = document.getElementById('frame'), VALID = { version_1: 1, version_2: 1, version_3: 1 };
   function show(v) {
     if (!VALID[v]) return;
     document.body.classList.add('view');
